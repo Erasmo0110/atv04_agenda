@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Detalhes da tarefa</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-input type="text" placeholder="Nome da tarefa" [(ngModel)]="nome"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-input type="text" placeholder="Descricao da tarefa" [(ngModel)]=""></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-input (click)="enviarTarefa()">Salvar</ion-input>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

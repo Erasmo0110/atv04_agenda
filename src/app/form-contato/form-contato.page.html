@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Contato</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-input type="text" placeholder="Nome" [(ngModel)]="nome"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-input type="text" placeholder="E-mail" [(ngModel)]="email"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-input type="text" placeholder="Telefone" [(ngModel)]="telefone"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-input (click)="enviarContato()">Enviar</ion-input>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
