@@ -9,6 +9,10 @@ export class TarefaService {
   constructor(private firestore: AngularFirestore ) { }
 
   incluir(tarefa : any){
-    return this.firestore.collection("tarefa").add(tarefa);
+    return this.firestore.collection("tarefa").add(tarefa); 
+  }
+
+  listar(){
+    return this.firestore.collection("tarefa").snapshotChanges();
   }
 }
