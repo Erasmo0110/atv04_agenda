@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { NavController } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
 import { TarefaService } from '../services/tarefa.service';
 
 @Component({
@@ -10,7 +12,10 @@ import { TarefaService } from '../services/tarefa.service';
 export class TarefasPage implements OnInit {
   tarefas: any;
 
-  constructor(private sevice : TarefaService) { }
+  constructor(private sevice : TarefaService,
+              private rota: ActivatedRoute,
+              private nav: NavController
+    ) { }
 
   ngOnInit() {
     this.sevice.listar().subscribe(data => {
@@ -28,5 +33,26 @@ export class TarefasPage implements OnInit {
     );
 
   }
+
+  inicioAlteracao(registro){
+    console.log(registro);
+    this.nav.navigateForward( [ "form-tarefa", 
+      { id: registro.id, 
+        nome: registro.nome,
+        descricao: registro.descricao
+      }
+    ] );
+  }
+
+
+
+
+
+
+
+
+
+
+
 
 }
