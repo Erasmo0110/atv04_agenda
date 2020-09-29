@@ -43,16 +43,5 @@ export class TarefasPage implements OnInit {
       }
     ] );
   }
-
-
-
-
-
-
-
-
-
-
-
-
+  
 }

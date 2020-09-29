@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { NavController } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
 import { ContatoService } from '../services/contato.service';
 
 @Component({
@@ -10,7 +12,10 @@ import { ContatoService } from '../services/contato.service';
 export class ContatosPage implements OnInit {
   contatos: any;
 
-  constructor(private service : ContatoService) { }
+  constructor(private service : ContatoService,
+              private rota: ActivatedRoute,
+              private nav: NavController
+    ) { }
 
   ngOnInit() {
     this.service.listar().subscribe(data => {
@@ -28,6 +33,17 @@ export class ContatosPage implements OnInit {
     }
     );
 
+  }
+
+  inicioAlteracao(registro){
+    console.log(registro);
+    this.nav.navigateForward( [ "form-contato",
+      { id: registro.id,
+        nome: registro.nome,
+        email: registro.email,
+        telefone: registro.telefone
+      }
+   ] );
   }
 
 }
