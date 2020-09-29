@@ -46,4 +46,8 @@ export class ContatosPage implements OnInit {
    ] );
   }
 
+  remover(registro){
+    this.service.excluir(registro);
+  }
+
 }

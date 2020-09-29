@@ -11,14 +11,15 @@ import { TarefaService } from '../services/tarefa.service';
 })
 export class TarefasPage implements OnInit {
   tarefas: any;
+  alerta: any;
 
-  constructor(private sevice : TarefaService,
+  constructor(private service : TarefaService,
               private rota: ActivatedRoute,
               private nav: NavController
     ) { }
 
   ngOnInit() {
-    this.sevice.listar().subscribe(data => {
+    this.service.listar().subscribe(data => {
         this.tarefas = data.map(e => {
           return {
             id: e.payload.doc.id,
@@ -44,4 +45,27 @@ export class TarefasPage implements OnInit {
     ] );
   }
   
+  async remover(registro) {
+    const mensagem = await this.alerta.create({
+      header: "Atenção",
+      message: "Deseja excluir essa tarefa?",
+      buttons: [
+        {
+          text: "Ok",
+          handler:() => {
+            this.service.excluir(registro);
+          }
+        }, 
+        {
+          text: "Cancelar",
+          handler: () => {}
+        }
+      ]
+    });
+    
+    await mensagem.present();
+
+    
+  }
+
 }
